@@ -2,7 +2,7 @@
     <div id="app">
         
         <nav>
-            <div class="nav-wrapper blue darken-1">
+            <div class="nav-wrapper blue darken-3">
                 <a href="#" class="brand-logo center">EletroAPP</a>
             </div>
         </nav>
@@ -27,7 +27,7 @@
                         <input type="text" placeholder="Nome" v-model="device.name" >
                         
                         <label>Marca</label>
-                        <select v-model="device.brand" >
+                        <select v-model="device.brand" class="browser-default" >
                             <option value="">Selecione...</option>
                             <option value="Electrolux">Electrolux</option>
                             <option value="Brastemp">Brastemp</option>
@@ -60,7 +60,7 @@
                 </div> 
                 
                 <!-- Tabela com os registros -->
-                <table class="container striped">
+                <table class="container striped" v-if="this.tabela">
                     
                     <thead>
                         
@@ -134,6 +134,7 @@ export default {
             devices: [],
             errors: [],
             status: true,
+            tabela: false
         }
     },
     
@@ -149,6 +150,11 @@ export default {
             Device.read().then(response => {
                 this.devices = response.data.devices
                 this.status = true;
+                
+                if(this.devices.length > 0){
+                    this.tabela = true;
+                }
+                
             }).catch(e => {
                 console.log(e)
                 this.status = false;
