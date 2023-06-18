@@ -8,14 +8,14 @@ Ele consome API EletroAPI para a manipulação de registros no banco de dados.
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Para utilizar o servidor local NodeJS neste projeto, necessário também yarn
 ```
-npm run serve
+npm install yarn --global
 ```
 
-### Compiles and minifies for production
+### Iniciando o servidor
 ```
-npm run build
+npm run serve
 ```
 
 ### Lints and fixes files
